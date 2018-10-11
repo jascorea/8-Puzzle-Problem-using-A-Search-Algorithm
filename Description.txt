@@ -1,0 +1,36 @@
+INTRODUCTION
+•	The 8-puzzle is a smaller version of the slightly better known 15-puzzle. The puzzle consists of an area divided into a grid, 3 by 3 for the 8-puzzle. On each grid square is a tile, expect for one square which remains empty. Thus, there are eight tiles in the 8-puzzle . 
+•	The aim of the puzzle is to achieve a given configuration of tiles i .e goal state,  from a given (different) configuration by sliding the individual tiles around the grid as described above. Move empty space (blank) to the left, move blank up, move blank to the right and move blank down to achieve goal configuration.
+
+APPROACH TO SOLVE:
+
+To solve 8-puzzle  we use the best-first search algorithm called A∗ search. It evaluates nodes by combining g(n), the cost to reach the node, and h(n), the cost to get from the node to the goal:
+f(n) = g(n) + h(n)
+Since g(n) gives the path cost from the start node to node n, and h(n) is the estimated cost of the cheapest path from n to the goal, we have f(n) = estimated cost of the cheapest solution through n .
+To find the value for h(n) we use the heuristic functions, and two of the most commonly used are :
+• h1 = the number of misplaced tiles
+• h2 = the sum of the distances of the tiles from their goal positions. 
+
+DATA STRUCTURES :
+
+1.	Class Node – This class holds the goal state, blank tile’s row and column position, reference to parent, the current state space, manhattan distance and number of misplaced tiles for every node.
+2.	Priority Queue – used when the objects are supposed to be processed based on the priority. The elements of the priority queue are ordered according to the natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used. In the program code, it is used as the fringe which has the nodes in increasing order of the costs. The cost can be based on heuristic 1 or 2.
+3.	Comparator Interface - Comparator interface is used to order the objects of user-defined classes. In a* problem, it is used to compare nodes based on cost and arrange it in the priority queue.
+
+
+
+FUNCTIONALITIES IMPLEMENTED:
+
+1.	isItGoal() : used to check if the goal state is achieved or not.
+2.	printBoard() : Used print the state space of the board.
+3.	calculateHeuristicManhattan() - calculates the Manhattan Dist - h(n)
+4.	calculateHeuristicMisplaced() - calculates the number of misplaced tiles – h(n)
+5.	function1() and function2() – calculates the cost i.e f(n)=g(n)+h(n), where g(n) is the level from the root(start node).
+6.	check() - Checks which nodes are to be selected for  expansion.
+7.	isItVisited() - Checks if state is already present in the openList of nodes covered.
+8.	areTheyEqual() - Compares if two nodes are same or not
+9.	printTheBoards() – Prints the sequence of states.
+10.	startOperation() - Has the operations to move the blank tile up, down, left and right.
+11.	goUp(), goDown(), goLeft(), goRight() - Performs the operations to go up, down, left and right respectively.
+
+
